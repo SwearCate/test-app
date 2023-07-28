@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import { useCharactersStore } from '../store/characters';
+import { useCharactersStore } from '../../store/characters';
 
 export default {
-  async setup() {
+  async setup(props, { route }) {
     const { fetchCharacter } = useCharactersStore();
 
     // Fetch the character data
-    const character = await fetchCharacter(1); // Replace 1 with the character ID
+    const character = await fetchCharacter(route.params.id);
 
     return {
       character,

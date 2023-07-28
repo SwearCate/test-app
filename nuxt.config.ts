@@ -18,6 +18,8 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
   ],
 
-  modules: ['@pinia/nuxt', '@nuxtjs/tailwindcss'],
+  modules: ['@pinia/nuxt',
+    '@nuxtjs/tailwindcss',
+  ],
   devtools: { enabled: true }
 })
