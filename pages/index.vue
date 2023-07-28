@@ -1,19 +1,31 @@
 <template>
-  <div>
-    <input v-model="searchName" @input="filterCharacters" placeholder="Search by name" />
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center py-6">
+      <input
+          v-model="searchName"
+          @input="filterCharacters"
+          placeholder="Search by name"
+          class="w-full max-w-xs rounded-md border border-gray-300 shadow-sm px-4 py-2"
+      />
 
-    <select v-model="filterStatus" @change="filterCharacters">
-      <option value="">All</option>
-      <option value="alive">Alive</option>
-      <option value="dead">Dead</option>
-      <option value="unknown">Unknown</option>
-    </select>
+      <select
+          v-model="filterStatus"
+          @change="filterCharacters"
+          class="rounded-md border border-gray-300 shadow-sm px-4 py-2"
+      >
+        <option value="">All</option>
+        <option value="alive">Alive</option>
+        <option value="dead">Dead</option>
+        <option value="unknown">Unknown</option>
+      </select>
+    </div>
 
     <!-- Display the filtered list of characters -->
-    <div>
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       <CharacterCard v-for="character in filteredCharacters" :key="character.id" :character="character" />
-      <infinite-loading @infinite="loadMore"></infinite-loading>
     </div>
+
+    <infinite-loading @infinite="loadMore"></infinite-loading>
   </div>
 </template>
 
