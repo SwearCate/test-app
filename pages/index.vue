@@ -20,10 +20,12 @@
 <script>
 import { useCharactersStore } from '../store/characters';
 import CharacterCard from '../components/CharacterCard.vue';
+import InfiniteLoading from 'v3-infinite-loading';
 
 export default {
   components: {
     CharacterCard,
+    InfiniteLoading,
   },
   setup() {
     const { characters, fetchPage, setFilteredCharacters } = useCharactersStore();
