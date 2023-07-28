@@ -2,7 +2,7 @@
   <div>
     <!-- Общий хедер приложения -->
     <header>
-      <h1>My Nuxt App</h1>
+      <h1>My Nuxt Appdd</h1>
       <!-- Навигационное меню -->
       <nav>
         <nuxt-link to="/">Home</nuxt-link>
@@ -13,7 +13,7 @@
 
     <!-- Контент текущей страницы -->
     <main>
-      <nuxt />
+      <router-view />
     </main>
 
     <!-- Общий футер приложения -->
