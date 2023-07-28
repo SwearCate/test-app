@@ -16,6 +16,10 @@ export const useCharactersStore = defineStore('characters', {
             const response = await axios.get(`${BASE_URL}/character?page=${page}`);
             this.characters.push(...response.data.results);
         },
+        async fetchCharacter(id) {
+            const response = await axios.get(`${BASE_URL}/character/${id}`);
+            return response.data;
+        },
         setFilteredCharacters(filteredCharacters) {
             this.filteredCharacters = filteredCharacters;
         },
