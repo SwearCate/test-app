@@ -1,23 +1,27 @@
 <template>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center py-6">
-      <input
-          v-model="searchName"
-          @input="filterCharacters"
-          placeholder="Search by name"
-          class="w-full max-w-xs rounded-md border border-gray-300 shadow-sm px-4 py-2"
-      />
+      <nuxt-link to="/" class="text-lg font-bold">Home</nuxt-link>
 
-      <select
-          v-model="filterStatus"
-          @change="filterCharacters"
-          class="rounded-md border border-gray-300 shadow-sm px-4 py-2"
-      >
-        <option value="">All</option>
-        <option value="alive">Alive</option>
-        <option value="dead">Dead</option>
-        <option value="unknown">Unknown</option>
-      </select>
+      <div class="flex items-center">
+        <input
+            v-model="searchName"
+            @input="filterCharacters"
+            placeholder="Search by name"
+            class="w-full max-w-xs rounded-md border border-gray-300 shadow-sm px-4 py-2 mr-4"
+        />
+
+        <select
+            v-model="filterStatus"
+            @change="filterCharacters"
+            class="rounded-md border border-gray-300 shadow-sm px-4 py-2"
+        >
+          <option value="">All</option>
+          <option value="alive">Alive</option>
+          <option value="dead">Dead</option>
+          <option value="unknown">Unknown</option>
+        </select>
+      </div>
     </div>
 
     <!-- Display the filtered list of characters -->

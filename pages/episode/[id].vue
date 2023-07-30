@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nuxt-link to="/" class="text-lg font-bold mb-4 inline-block">Home</nuxt-link>
+
     <h1 class="text-3xl font-bold">{{ episode.name }}</h1>
     <p class="text-gray-600 mt-2">Дата премьеры: {{ episode.air_date }}</p>
     <h2 class="text-2xl font-bold mt-4">Персонажи:</h2>

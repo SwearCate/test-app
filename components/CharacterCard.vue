@@ -1,6 +1,6 @@
 <template>
   <nuxt-link :to="`/character/${character.id}`">
-    <div class="p-4 shadow rounded bg-white">
+    <div class="p-4 shadow rounded bg-white h-full">
       <img :src="character.image" class="h-12 w-12 rounded-full" alt="Character Image" />
       <div class="p-4">
         <h2 class="text-l font-bold">{{ character.name }}</h2>
