@@ -22,7 +22,7 @@
 
     <!-- Display the filtered list of characters -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <CharacterCard v-for="character in filteredCharacters" :key="character.id" :character="character" />
+      <CharacterCard v-for="character in characters" :key="character.id" :character="character" />
     </div>
 
     <infinite-loading @infinite="loadMore"></infinite-loading>
@@ -40,31 +40,19 @@ export default {
     InfiniteLoading,
   },
   setup() {
-    const { characters, fetchPage, setFilteredCharacters } = useCharactersStore();
-
-    // Fetch the first page of data
-    fetchPage();
+    const { characters, fetchPage } = useCharactersStore();
 
     // Variables to hold the filters
     const searchName = ref('');
     const filterStatus = ref('');
 
-    // Computed property for the filtered list of characters
-    const filteredCharacters = computed(() => {
-      const nameFilter = searchName.value.trim().toLowerCase();
-      const statusFilter = filterStatus.value;
-
-      // Filter by name and status
-      return characters.filter((character) => {
-        const nameMatch = character.name.toLowerCase().includes(nameFilter);
-        const statusMatch = !statusFilter || character.status === statusFilter;
-        return nameMatch && statusMatch;
-      });
-    });
-
     // Method to perform character filtering
-    const filterCharacters = () => {
-      setFilteredCharacters(filteredCharacters.value);
+    const filterCharacters = async () => {
+      // Clear the current list of characters
+      characters.length = 0;
+
+      // Fetch the first page of data with the current filters
+      await fetchPage(1, searchName.value, filterStatus.value);
     };
 
     // Variables to control pagination
@@ -77,16 +65,19 @@ export default {
 
       loading.value = true;
       page.value += 1;
-      await fetchPage(page.value);
+      await fetchPage(page.value, searchName.value, filterStatus.value);
       loading.value = false;
 
       state.loaded();
     };
 
+    // Fetch the first page of data with the initial filters
+    fetchPage(1, searchName.value, filterStatus.value);
+
     return {
       searchName,
       filterStatus,
-      filteredCharacters,
+      characters,
       filterCharacters,
       loadMore,
       loading,
