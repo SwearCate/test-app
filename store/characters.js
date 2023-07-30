@@ -1,27 +1,29 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
-const BASE_URL = 'https://rickandmortyapi.com/api';
-
-export const useCharactersStore = defineStore('characters', {
+export const useCharactersStore = defineStore({
+    id: 'characters',
     state: () => ({
         characters: [],
         filteredCharacters: [],
     }),
-    persist: {
-        paths: ['characters', 'filteredCharacters'],
-    },
     actions: {
-        async fetchPage(page = 1) {
-            const response = await axios.get(`${BASE_URL}/character?page=${page}`);
+        async fetchPage(page = 1, name = '', status = '') {
+            const response = await axios.get('https://rickandmortyapi.com/api/character', {
+                params: {
+                    page,
+                    name,
+                    status,
+                },
+            });
             this.characters.push(...response.data.results);
         },
         async fetchCharacter(id) {
-            const response = await axios.get(`${BASE_URL}/character/${id}`);
+            const response = await axios.get(`https://rickandmortyapi.com/api/character/${id}`);
             return response.data;
         },
-        setFilteredCharacters(filteredCharacters) {
-            this.filteredCharacters = filteredCharacters;
+        setFilteredCharacters(characters) {
+            this.filteredCharacters = characters;
         },
     },
 });
