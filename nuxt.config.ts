@@ -21,5 +21,13 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt',
     '@nuxtjs/tailwindcss',
   ],
-  devtools: { enabled: true }
+  devtools: { enabled: true },
+
+  app: {
+    pageTransition: {
+      name: 'page',
+      mode: 'out-in'
+    }
+  }
+
 })
