@@ -2,6 +2,10 @@
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
+## Deploy on surge.sh
+
+https://spiffy-wrench.surge.sh/
+
 ## Setup
 
 Make sure to install the dependencies:
