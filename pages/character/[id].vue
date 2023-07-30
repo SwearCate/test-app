@@ -5,14 +5,13 @@
       <h1 class="text-3xl font-bold mt-4">{{ character.name }}</h1>
       <p class="text-lg mt-2">{{ character.species }}</p>
       <p class="text-lg mt-2">{{ character.location.name }}</p>
-
     </div>
   </div>
 </template>
 
 <script>
-import { useCharactersStore } from '../../store/characters';
-import { useRoute } from 'vue-router';
+import { useCharactersStore } from "../../store/characters";
+import { useRoute } from "vue-router";
 
 export default {
   async setup() {
@@ -27,5 +26,4 @@ export default {
     };
   },
 };
-
 </script>

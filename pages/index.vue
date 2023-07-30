@@ -5,16 +5,16 @@
 
       <div class="flex items-center">
         <input
-            v-model="searchName"
-            @input="filterCharacters"
-            placeholder="Search by name"
-            class="w-full max-w-xs rounded-md border border-gray-300 shadow-sm px-4 py-2 mr-4"
+          v-model="searchName"
+          @input="filterCharacters"
+          placeholder="Search by name"
+          class="w-full max-w-xs rounded-md border border-gray-300 shadow-sm px-4 py-2 mr-4"
         />
 
         <select
-            v-model="filterStatus"
-            @change="filterCharacters"
-            class="rounded-md border border-gray-300 shadow-sm px-4 py-2"
+          v-model="filterStatus"
+          @change="filterCharacters"
+          class="rounded-md border border-gray-300 shadow-sm px-4 py-2"
         >
           <option value="">All</option>
           <option value="alive">Alive</option>
@@ -25,8 +25,14 @@
     </div>
 
     <!-- Display the filtered list of characters -->
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      <CharacterCard v-for="character in characters" :key="character.id" :character="character" />
+    <div
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+    >
+      <CharacterCard
+        v-for="character in characters"
+        :key="character.id"
+        :character="character"
+      />
     </div>
 
     <infinite-loading @infinite="loadMore"></infinite-loading>
@@ -34,9 +40,9 @@
 </template>
 
 <script>
-import { useCharactersStore } from '../store/characters';
-import CharacterCard from '../components/CharacterCard.vue';
-import InfiniteLoading from 'v3-infinite-loading';
+import { useCharactersStore } from "../store/characters";
+import CharacterCard from "../components/CharacterCard.vue";
+import InfiniteLoading from "v3-infinite-loading";
 
 export default {
   components: {
@@ -47,8 +53,8 @@ export default {
     const { characters, fetchPage } = useCharactersStore();
 
     // Variables to hold the filters
-    const searchName = ref('');
-    const filterStatus = ref('');
+    const searchName = ref("");
+    const filterStatus = ref("");
 
     // Method to perform character filtering
     const filterCharacters = async () => {
